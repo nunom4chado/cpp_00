@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 23:07:18 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/13 14:04:01 by numartin         ###   ########.fr       */
+/*   Created: 2023/09/20 11:53:53 by numartin          #+#    #+#             */
+/*   Updated: 2023/09/20 11:59:50 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-void    to_uppercase(char *str)
-{
-    for (int i = 0; str[i]; i++)
-        std::cout << char(toupper(str[i]));
+bool    is_str_empty( std::string string) {
+    for (unsigned i = 0; i < string.length(); i++) {
+        if (!isspace(string[i]))
+            return false;
+    }
+    return true;
 }
 
-int main(int argc, char **argv)
-{
-    if (argc == 1)
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-    else
-    {
-        for (int i = 1; i < argc; i++)
-            to_uppercase(argv[i]);
-        std::cout << std::endl;
+bool    is_valid_number( std::string string ) {
+    for (unsigned i = 0; i < string.length(); i++) {
+        if (!isdigit(string[i]))
+            return false;
     }
-    return (0);
+    return true;
 }
