@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:14:18 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/20 12:03:29 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:36:18 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ std::string Contact::getPhoneNumber( void ) const {
 }
 
 int    Contact::setPhoneNumber( std::string number ) {
-    if (!is_valid_number(number))
+    if (!is_valid_number(number) || number.length() != 9)
         return 1;
     this->_phoneNumber = number;
     return 0;
