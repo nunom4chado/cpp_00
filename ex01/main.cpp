@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 18:18:43 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/20 12:04:18 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:11:57 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@
 // std::cin.get();
 
 int main( void ) {
-	std::string cmd;
 	PhoneBook phonebook;
-
-	phonebook.add();
+	std::string cmd;
 
 	while(1) {
 		print_main_header();
@@ -33,9 +31,9 @@ int main( void ) {
 		if (cmd == "ADD")
 			phonebook.add();
 		else if (cmd == "SEARCH")
-			std::cout << "m search" << std::endl;
+			phonebook.search();
 		else if (cmd == "EXIT")
-			std::cout << "m exit" << std::endl;
+			break;
 		else {
 			std::cout << "Error: '" << cmd << "' is not a valid command. Press any key to continue ...";
 			std::cin.get();

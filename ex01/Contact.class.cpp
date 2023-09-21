@@ -6,16 +6,21 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:14:18 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/20 17:36:18 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:28:01 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Contact.class.hpp"
 #include "phonebook.hpp"
 
-Contact::Contact( void ) : _firstName(""), _lastName(""), _nickName(""), _phoneNumber(""), _darkestSecret("") {}
+Contact::Contact( void ) : _firstName(""), _lastName(""), _nickName(""), _phoneNumber(""), _darkestSecret("") {
+    std::cout << "Contact constructer called" << std::endl;
+}
 
-Contact::~Contact( void ) {}
+Contact::~Contact( void ) {
+    std::cout << "Contact destructer called" << std::endl;
+}
 
 /* ------------------------------- First Name ------------------------------- */
 std::string Contact::getFirstName( void ) const {

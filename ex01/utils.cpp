@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:53:53 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/20 11:59:50 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:00:50 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,13 @@ bool    is_valid_number( std::string string ) {
             return false;
     }
     return true;
+}
+
+std::string    formatCell( std::string text ) {
+    if (text.length() > 10) {
+        text.resize(9);
+        text.append(".");
+        return text;
+    }
+    return text;
 }

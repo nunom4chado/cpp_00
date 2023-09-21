@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:59:08 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/20 11:03:40 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:29:13 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 void	print_main_header(void) {
-	system("clear");
+	//system("clear");
 	
 	std::cout << std::endl;
 	
@@ -42,7 +42,7 @@ void	print_main_header(void) {
 }
 
 void    print_add_header( void ) {
-	system("clear");
+	//system("clear");
 	
 	std::cout << std::endl;
 
@@ -53,4 +53,16 @@ void    print_add_header( void ) {
 	std::cout << std::endl;
 
 	std::cout << "-- New Contact Entry (All fields are required) --" << std::endl << std::endl;
+}
+
+void    print_search_header( void ) {
+	//system("clear");
+	
+	std::cout << std::endl;
+
+	std::cout << "▒█▀▀▀█ █▀▀ █▀▀█ █▀▀█ █▀▀ █░░█ " << std::endl;
+	std::cout << "░▀▀▀▄▄ █▀▀ █▄▄█ █▄▄▀ █░░ █▀▀█ " << std::endl;
+	std::cout << "▒█▄▄▄█ ▀▀▀ ▀░░▀ ▀░▀▀ ▀▀▀ ▀░░▀" << std::endl;
+
+	std::cout << std::endl;
 }
