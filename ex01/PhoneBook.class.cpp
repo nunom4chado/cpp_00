@@ -6,38 +6,53 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:54:32 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/21 16:58:32 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:55:36 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
+#include <string> 
 #include <stdlib.h>
 #include "PhoneBook.class.hpp"
 #include "Contact.class.hpp"
 #include "phonebook.hpp"
 
-PhoneBook::PhoneBook( void ) : index(0) {}
+PhoneBook::PhoneBook( void ) : counter(-1) {}
 PhoneBook::~PhoneBook( void ) {}
 
-/* void    input_field(const std::string field_name, Contact &instance, std::string (Contact::*get)( void ) const, int (Contact::*set)(std::string)) {
-    while((instance.*get)() == "")
-    {
-        std::string input;
-        std::cout << "\t\t[" << field_name << "]: ";
-        std::getline(std::cin, input);
-        if ((instance.*set)(input) != 0)
-            std::cout << "\t\t\tError: " << field_name  << " is required" << std::endl;
-    }
-}
+// void    input_field(const std::string field_name, Contact &instance, std::string (Contact::*get)( void ) const, int (Contact::*set)(std::string)) {
+//     while((instance.*get)() == "")
+//     {
+//         std::string input;
+//         std::cout << "\t\t[" << field_name << "]: ";
+//         std::getline(std::cin, input);
+//         if ((instance.*set)(input) != 0)
+//             std::cout << "\t\t\tError: " << field_name  << " is required" << std::endl;
+//     }
+// }
 
-input_field("First Name", newContact, &Contact::getFirstName, &Contact::setFirstName); */
+// input_field("First Name", newContact, &Contact::getFirstName, &Contact::setFirstName);
 
 
 void PhoneBook::add( void ) {
     print_add_header();
 
-    Contact *newContact = &this->contacts[this->index++];
+    this->counter++;
+
+    int index = this->counter % (MAX_CONTACTS);
+
+    // std::cout << "counter is " << this->counter << std::endl;
+    // std::cout << "index is " << index << std::endl;
+
+    if (counter >= MAX_CONTACTS) {
+        std::cout << std::endl;
+        std::cout << "Phonebook is full! Overwritting " << this->contacts[index].getFirstName() << "'s contact." << std::endl;
+        std::cout << std::endl;
+        this->contacts[index] = Contact();
+    }
+
+    Contact *newContact = &this->contacts[index];
 
     while(newContact->getFirstName() == "")
     {
@@ -83,6 +98,8 @@ void PhoneBook::add( void ) {
         if (newContact->setSecret(darkestSecret) != 0)
             std::cout << "\t\t\tError: Darkest secret is required" << std::endl;
     }
+
+    std::cout << "contanct created" << std::endl;
 }
 
 void    PhoneBook::printContactRow(int index) const {
@@ -110,22 +127,32 @@ void    PhoneBook::search( void ) const {
         std::cout << "*                                           *" << std::endl;
         std::cout << "*-------------------------------------------*" << std::endl;
     } else {
-        for(int i = 0; i <8; i++)
+        for(int i = 0; i <= this->counter; i++)
             printContactRow(i);
     }
 
+    std::cout << "[";
+    if ( this->counter < MAX_CONTACTS)
+        std::cout << this->counter + 1;
+    else
+        std::cout << MAX_CONTACTS;
+    std::cout << "/" << MAX_CONTACTS << "]" << std::endl;
+
     std::cout << std::endl;
 
-    std::cout << "Enter the contact index to show more info:" << std::endl;
     std::string input;
-    while (!(input.length() == 1 && (input[0] >= '0' && input[0] <= '7'))) {
-        std::cout << "> ";
+    while (!(input.length() && isdigit(input[0]) && ft_stoi(input) < MAX_CONTACTS)) {
+        std::cout << "Enter index to show contact info: ";
 	    std::getline(std::cin, input);
         std::cout << "Error: invalid index, try again." << std::endl;
     }
+
+    showInfo(ft_stoi(input));
 }
 
 void PhoneBook::showInfo( int index ) const {
     // TODO get contact info or display error message
-    (void) index;
+    std::cout << "Index is " << index << " and limit index is " << MAX_CONTACTS - 1 << std::endl;
+    std::cout << "Press any key to continue ...";
+    std::cin.get();
 }

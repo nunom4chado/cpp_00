@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:59:08 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/20 18:29:13 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:55:55 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 void	print_main_header(void) {
-	//system("clear");
+	system("clear");
 	
 	std::cout << std::endl;
 	
@@ -42,7 +42,7 @@ void	print_main_header(void) {
 }
 
 void    print_add_header( void ) {
-	//system("clear");
+	system("clear");
 	
 	std::cout << std::endl;
 
@@ -56,7 +56,7 @@ void    print_add_header( void ) {
 }
 
 void    print_search_header( void ) {
-	//system("clear");
+	system("clear");
 	
 	std::cout << std::endl;
 

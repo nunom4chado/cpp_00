@@ -6,20 +6,20 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:28:07 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/21 16:09:42 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:13:28 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_CLASS_H
 # define PHONEBOOK_CLASS_H
 
-# define MAX_CONTACTS 8
+# define MAX_CONTACTS 2
 
 # include "Contact.class.hpp"
 
 class PhoneBook {
     public:
-        int index;
+        int counter;
         Contact contacts[MAX_CONTACTS];
 
         PhoneBook( void );

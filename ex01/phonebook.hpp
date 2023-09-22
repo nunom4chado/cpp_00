@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:59:55 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/21 16:22:24 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:33:30 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ std::string     formatCell( std::string text );
 
 bool    is_str_empty( std::string string);
 bool    is_valid_number( std::string string );
+
+int     ft_stoi( std::string string);
 
 #endif
