@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:54:32 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 15:55:41 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:35:03 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ void PhoneBook::add( void ) {
 void    PhoneBook::printContactRow(int index) const {
     if ((index >= 0 && index < MAX_CONTACTS) && this->contacts[index].getFirstName() != "") {
         std::cout   << "|" << std::setw(10) << index
-                    << "|" << std::setw(10) << formatCell(this->contacts[index].getFirstName())
-                    << "|" << std::setw(10) << formatCell(this->contacts[index].getLastName())
-                    << "|" << std::setw(10) << formatCell(this->contacts[index].getNickName())
+                    << "|" << std::setw(10) << format_cell(this->contacts[index].getFirstName())
+                    << "|" << std::setw(10) << format_cell(this->contacts[index].getLastName())
+                    << "|" << std::setw(10) << format_cell(this->contacts[index].getNickName())
                     << "|" << std::endl;
         std::cout << "*-------------------------------------------*" << std::endl;
 
@@ -143,7 +143,7 @@ void    PhoneBook::search( void ) const {
     std::cout << std::endl;
 
     if(this->counter < 0)
-        return pressAnyKeyToContinue();
+        return press_enter_to_continue();
 
     std::string input;
     while (!(input.length() && isdigit(input[0]) && ft_stoi(input) < ft_min(MAX_CONTACTS, this->counter + 1))) {
@@ -165,5 +165,5 @@ void PhoneBook::showContactInfo( int index ) const {
     std::cout << "\t[Phone Number]: " << this->contacts[index].getPhoneNumber() << std::endl;
     std::cout << "\t[Darkest Secret]: " << this->contacts[index].getSecret() << std::endl;
 
-    pressAnyKeyToContinue();
+    press_enter_to_continue();
 }

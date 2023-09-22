@@ -6,18 +6,14 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 18:18:43 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 16:30:29 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:36:24 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include "Contact.class.hpp"
 #include "PhoneBook.class.hpp"
 #include "phonebook.hpp"
-
-// std::cout << "Press any key to continue ...";
-// std::cin.get();
 
 int main( void ) {
 	PhoneBook phonebook;
