@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:54:32 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 11:55:36 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 12:16:45 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void PhoneBook::add( void ) {
     print_add_header();
 
     this->counter++;
-
+    
     int index = this->counter % (MAX_CONTACTS);
 
     // std::cout << "counter is " << this->counter << std::endl;
@@ -98,8 +98,6 @@ void PhoneBook::add( void ) {
         if (newContact->setSecret(darkestSecret) != 0)
             std::cout << "\t\t\tError: Darkest secret is required" << std::endl;
     }
-
-    std::cout << "contanct created" << std::endl;
 }
 
 void    PhoneBook::printContactRow(int index) const {
@@ -114,9 +112,7 @@ void    PhoneBook::printContactRow(int index) const {
     }
 }
 
-void    PhoneBook::search( void ) const {
-    print_search_header();
-
+void    PhoneBook::showContactTable( void ) const {
     std::cout << "*-------------------------------------------*" << std::endl;
     std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
     std::cout << "*-------------------------------------------*" << std::endl;
@@ -131,26 +127,33 @@ void    PhoneBook::search( void ) const {
             printContactRow(i);
     }
 
+    // Show phonebook used memory (ex [2/8])
     std::cout << "[";
     if ( this->counter < MAX_CONTACTS)
         std::cout << this->counter + 1;
     else
         std::cout << MAX_CONTACTS;
     std::cout << "/" << MAX_CONTACTS << "]" << std::endl;
+}
 
+void    PhoneBook::search( void ) const {
+    print_search_header();
+    showContactTable();
+    
     std::cout << std::endl;
 
     std::string input;
     while (!(input.length() && isdigit(input[0]) && ft_stoi(input) < MAX_CONTACTS)) {
         std::cout << "Enter index to show contact info: ";
 	    std::getline(std::cin, input);
-        std::cout << "Error: invalid index, try again." << std::endl;
+        if (!(input.length() && isdigit(input[0]) && ft_stoi(input) < MAX_CONTACTS))
+            std::cout << "Error: invalid index, try again." << std::endl;
     }
 
-    showInfo(ft_stoi(input));
+    showContactInfo(ft_stoi(input));
 }
 
-void PhoneBook::showInfo( int index ) const {
+void PhoneBook::showContactInfo( int index ) const {
     // TODO get contact info or display error message
     std::cout << "Index is " << index << " and limit index is " << MAX_CONTACTS - 1 << std::endl;
     std::cout << "Press any key to continue ...";

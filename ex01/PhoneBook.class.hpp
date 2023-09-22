@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:28:07 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 11:13:28 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 12:10:34 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class PhoneBook {
         void    add( void );
         void    search( void ) const;
         void    printContactRow( int index ) const;
-        // TODO Search Contacts
-        void    showInfo( int index ) const;
+        void    showContactTable( void ) const;
+        void    showContactInfo( int index ) const;
 };
 
 #endif
