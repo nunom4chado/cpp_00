@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:54:32 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 16:35:03 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:41:55 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void PhoneBook::add( void ) {
     this->counter++;
     
     int index = this->counter % (MAX_CONTACTS);
-
-    // std::cout << "counter is " << this->counter << std::endl;
-    // std::cout << "index is " << index << std::endl;
 
     if (counter >= MAX_CONTACTS) {
         std::cout << std::endl;
