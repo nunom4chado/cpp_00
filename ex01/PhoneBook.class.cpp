@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:54:32 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 12:16:45 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:55:41 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,11 +142,14 @@ void    PhoneBook::search( void ) const {
     
     std::cout << std::endl;
 
+    if(this->counter < 0)
+        return pressAnyKeyToContinue();
+
     std::string input;
-    while (!(input.length() && isdigit(input[0]) && ft_stoi(input) < MAX_CONTACTS)) {
+    while (!(input.length() && isdigit(input[0]) && ft_stoi(input) < ft_min(MAX_CONTACTS, this->counter + 1))) {
         std::cout << "Enter index to show contact info: ";
 	    std::getline(std::cin, input);
-        if (!(input.length() && isdigit(input[0]) && ft_stoi(input) < MAX_CONTACTS))
+        if (!(input.length() && isdigit(input[0]) && ft_stoi(input) < ft_min(MAX_CONTACTS, this->counter + 1)))
             std::cout << "Error: invalid index, try again." << std::endl;
     }
 
@@ -154,8 +157,13 @@ void    PhoneBook::search( void ) const {
 }
 
 void PhoneBook::showContactInfo( int index ) const {
-    // TODO get contact info or display error message
-    std::cout << "Index is " << index << " and limit index is " << MAX_CONTACTS - 1 << std::endl;
-    std::cout << "Press any key to continue ...";
-    std::cin.get();
+    std::cout << std::endl;
+    
+    std::cout << "\t[First Name]: " << this->contacts[index].getFirstName() << std::endl;
+    std::cout << "\t[Last Name]: " << this->contacts[index].getLastName() << std::endl;
+    std::cout << "\t[Nickname]: " << this->contacts[index].getNickName() << std::endl;
+    std::cout << "\t[Phone Number]: " << this->contacts[index].getPhoneNumber() << std::endl;
+    std::cout << "\t[Darkest Secret]: " << this->contacts[index].getSecret() << std::endl;
+
+    pressAnyKeyToContinue();
 }

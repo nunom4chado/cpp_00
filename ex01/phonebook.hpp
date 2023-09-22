@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:59:55 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/21 17:33:30 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:53:03 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ bool    is_str_empty( std::string string);
 bool    is_valid_number( std::string string );
 
 int     ft_stoi( std::string string);
+int     ft_min( int a, int b);
+
+void    pressAnyKeyToContinue( void ) ;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:14:18 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 11:52:51 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:58:43 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include "phonebook.hpp"
 
 Contact::Contact( void ) : _firstName(""), _lastName(""), _nickName(""), _phoneNumber(""), _darkestSecret("") {
-    std::cout << "Contact constructer called" << std::endl;
+    // std::cout << "Contact constructer called" << std::endl;
 }
 
 Contact::~Contact( void ) {
-    std::cout << "Contact destructer called" << std::endl;
+    //std::cout << "Contact destructer called" << std::endl;
 }
 
 /* ------------------------------- First Name ------------------------------- */

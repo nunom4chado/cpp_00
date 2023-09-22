@@ -6,14 +6,14 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:28:07 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 12:10:34 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:40:44 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_CLASS_H
 # define PHONEBOOK_CLASS_H
 
-# define MAX_CONTACTS 2
+# define MAX_CONTACTS 2 // TODO change to 8
 
 # include "Contact.class.hpp"
 

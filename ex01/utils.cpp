@@ -6,7 +6,7 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:53:53 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/21 17:33:24 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:53:06 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ int ft_stoi( std::string string) {
     return (nb);
 }
 
+int ft_min( int a, int b) {
+    if (a < b)
+        return a;
+    return b;
+}
+
 std::string    formatCell( std::string text ) {
     if (text.length() > 10) {
         text.resize(9);
@@ -44,4 +50,10 @@ std::string    formatCell( std::string text ) {
         return text;
     }
     return text;
+}
+
+void    pressAnyKeyToContinue( void ) {
+    std::cout << std::endl;
+    std::cout << "Press any key to continue ...";
+    std::cin.get();
 }
