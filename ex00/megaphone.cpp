@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-void    to_uppercase(char *str)
+void to_uppercase(char *str)
 {
     for (int i = 0; str[i]; i++)
         std::cout << char(toupper(str[i]));

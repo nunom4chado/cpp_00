@@ -1,21 +1,34 @@
-NAME		= megaphone
+NAME		= 	megaphone
 
-CXX			= c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+CXX			= 	c++
+CXXFLAGS	= 	-Wall -Wextra -Werror -std=c++98
 
-OBJS		= megaphone.o
+SRCS		:= 	megaphone.cpp
 
+OBJDIR		:= 	obj
+OBJ 		:= 	$(SRCS:%.cpp=$(OBJDIR)/%.o)
+
+
+# ---------------------------------------------------------------------------- #
+#                                  BASE RULES                                  #
+# ---------------------------------------------------------------------------- #
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(OBJS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CXX) $(OBJ) -o $(NAME)
+
+$(OBJDIR)/%.o: %.cpp
+	@mkdir -p '$(@D)'
+	$(CXX) -c $(CXXFLAGS) $< -o $@
 
 clean:
-	rm $(OBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# ------------------------------- END OF RULES ------------------------------- #
+
+.PHONY: all clean fclean re format
