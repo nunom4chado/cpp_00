@@ -32,19 +32,6 @@ fclean: clean
 
 re: fclean all
 
-# ---------------------------------------------------------------------------- #
-#                                 FORMAT RULES                                 #
-# ---------------------------------------------------------------------------- #
-format:
-	clang-format -style=microsoft -i ${SRCS}
-
-# ---------------------------------------------------------------------------- #
-#                                 LINTER RULES                                 #
-# ---------------------------------------------------------------------------- #
-lint:
-	clang-tidy ${HEADERS} -checks=-*,cppcoreguidelines-*
-	clang-tidy ${SRCS} -checks=-*,cppcoreguidelines-*
-
 # ------------------------------- END OF RULES ------------------------------- #
 
 .PHONY: all clean fclean re format
