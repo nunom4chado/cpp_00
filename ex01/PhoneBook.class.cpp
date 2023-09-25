@@ -10,18 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
-#include <string> 
-#include <stdlib.h>
 #include "PhoneBook.class.hpp"
 #include "Contact.class.hpp"
 #include "phonebook.hpp"
+#include <iomanip>
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 
-PhoneBook::PhoneBook( void ) : counter(-1) {}
-PhoneBook::~PhoneBook( void ) {}
+PhoneBook::PhoneBook(void) : counter(-1)
+{
+}
+PhoneBook::~PhoneBook(void)
+{
+}
 
-// void    input_field(const std::string field_name, Contact &instance, std::string (Contact::*get)( void ) const, int (Contact::*set)(std::string)) {
+// void    input_field(const std::string field_name, Contact &instance, std::string (Contact::*get)( void ) const, int
+// (Contact::*set)(std::string)) {
 //     while((instance.*get)() == "")
 //     {
 //         std::string input;
@@ -34,24 +39,26 @@ PhoneBook::~PhoneBook( void ) {}
 
 // input_field("First Name", newContact, &Contact::getFirstName, &Contact::setFirstName);
 
-
-void PhoneBook::add( void ) {
+void PhoneBook::add(void)
+{
     print_add_header();
 
     this->counter++;
-    
+
     int index = this->counter % (MAX_CONTACTS);
 
-    if (counter >= MAX_CONTACTS) {
+    if (counter >= MAX_CONTACTS)
+    {
         std::cout << std::endl;
-        std::cout << "Phonebook is full! Overwritting " << this->contacts[index].getFirstName() << "'s contact." << std::endl;
+        std::cout << "Phonebook is full! Overwritting " << this->contacts[index].getFirstName() << "'s contact."
+                  << std::endl;
         std::cout << std::endl;
         this->contacts[index] = Contact();
     }
 
     Contact *newContact = &this->contacts[index];
 
-    while(newContact->getFirstName() == "")
+    while (newContact->getFirstName() == "")
     {
         std::string firstName;
         std::cout << "\t\t[First Name]: ";
@@ -60,7 +67,7 @@ void PhoneBook::add( void ) {
             std::cout << "\t\t\tError: First name is required" << std::endl;
     }
 
-    while(newContact->getLastName() == "")
+    while (newContact->getLastName() == "")
     {
         std::string lastName;
         std::cout << "\t\t[Last Name]: ";
@@ -69,7 +76,7 @@ void PhoneBook::add( void ) {
             std::cout << "\t\t\tError: Last name is required" << std::endl;
     }
 
-    while(newContact->getNickName() == "")
+    while (newContact->getNickName() == "")
     {
         std::string nickName;
         std::cout << "\t\t[Nickname]: ";
@@ -78,7 +85,7 @@ void PhoneBook::add( void ) {
             std::cout << "\t\t\tError: Nickname is required" << std::endl;
     }
 
-    while(newContact->getPhoneNumber() == "")
+    while (newContact->getPhoneNumber() == "")
     {
         std::string phoneNumber;
         std::cout << "\t\t[Phone Number]: ";
@@ -87,7 +94,7 @@ void PhoneBook::add( void ) {
             std::cout << "\t\t\tError: Phone number is required and must be valid" << std::endl;
     }
 
-    while(newContact->getSecret() == "")
+    while (newContact->getSecret() == "")
     {
         std::string darkestSecret;
         std::cout << "\t\t[Darkest Secret]: ";
@@ -97,55 +104,61 @@ void PhoneBook::add( void ) {
     }
 }
 
-void    PhoneBook::printContactRow(int index) const {
-    if ((index >= 0 && index < MAX_CONTACTS) && this->contacts[index].getFirstName() != "") {
-        std::cout   << "|" << std::setw(10) << index
-                    << "|" << std::setw(10) << format_cell(this->contacts[index].getFirstName())
-                    << "|" << std::setw(10) << format_cell(this->contacts[index].getLastName())
-                    << "|" << std::setw(10) << format_cell(this->contacts[index].getNickName())
-                    << "|" << std::endl;
+void PhoneBook::printContactRow(int index) const
+{
+    if ((index >= 0 && index < MAX_CONTACTS) && this->contacts[index].getFirstName() != "")
+    {
+        std::cout << "|" << std::setw(10) << index << "|" << std::setw(10)
+                  << format_cell(this->contacts[index].getFirstName()) << "|" << std::setw(10)
+                  << format_cell(this->contacts[index].getLastName()) << "|" << std::setw(10)
+                  << format_cell(this->contacts[index].getNickName()) << "|" << std::endl;
         std::cout << "*-------------------------------------------*" << std::endl;
-
     }
 }
 
-void    PhoneBook::showContactTable( void ) const {
+void PhoneBook::showContactTable(void) const
+{
     std::cout << "*-------------------------------------------*" << std::endl;
     std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
     std::cout << "*-------------------------------------------*" << std::endl;
 
-    if (this->contacts[0].getFirstName() == "") {
+    if (this->contacts[0].getFirstName() == "")
+    {
         std::cout << "*                                           *" << std::endl;
         std::cout << "*             Empty Contact List            *" << std::endl;
         std::cout << "*                                           *" << std::endl;
         std::cout << "*-------------------------------------------*" << std::endl;
-    } else {
-        for(int i = 0; i <= this->counter; i++)
+    }
+    else
+    {
+        for (int i = 0; i <= this->counter; i++)
             printContactRow(i);
     }
 
     // Show phonebook used memory (ex [2/8])
     std::cout << "[";
-    if ( this->counter < MAX_CONTACTS)
+    if (this->counter < MAX_CONTACTS)
         std::cout << this->counter + 1;
     else
         std::cout << MAX_CONTACTS;
     std::cout << "/" << MAX_CONTACTS << "]" << std::endl;
 }
 
-void    PhoneBook::search( void ) const {
+void PhoneBook::search(void) const
+{
     print_search_header();
     showContactTable();
-    
+
     std::cout << std::endl;
 
-    if(this->counter < 0)
+    if (this->counter < 0)
         return press_enter_to_continue();
 
     std::string input;
-    while (!(input.length() && isdigit(input[0]) && ft_stoi(input) < ft_min(MAX_CONTACTS, this->counter + 1))) {
+    while (!(input.length() && isdigit(input[0]) && ft_stoi(input) < ft_min(MAX_CONTACTS, this->counter + 1)))
+    {
         std::cout << "Enter index to show contact info: ";
-	    std::getline(std::cin, input);
+        std::getline(std::cin, input);
         if (!(input.length() && isdigit(input[0]) && ft_stoi(input) < ft_min(MAX_CONTACTS, this->counter + 1)))
             std::cout << "Error: invalid index, try again." << std::endl;
     }
@@ -153,9 +166,10 @@ void    PhoneBook::search( void ) const {
     showContactInfo(ft_stoi(input));
 }
 
-void PhoneBook::showContactInfo( int index ) const {
+void PhoneBook::showContactInfo(int index) const
+{
     std::cout << std::endl;
-    
+
     std::cout << "\t[First Name]: " << this->contacts[index].getFirstName() << std::endl;
     std::cout << "\t[Last Name]: " << this->contacts[index].getLastName() << std::endl;
     std::cout << "\t[Nickname]: " << this->contacts[index].getNickName() << std::endl;

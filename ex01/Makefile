@@ -1,25 +1,55 @@
-NAME		= phonebook
+NAME		= 	phonebook
 
-CXX			= c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+CXX			= 	c++
+CXXFLAGS	= 	-Wall -Wextra -Werror -std=c++98
 
-OBJS		= 	main.o\
-				Contact.class.o\
-				PhoneBook.class.o\
-				print_headers.o\
-				utils.o
+HEADERS		:=	Contact.class.hpp\
+				PhoneBook.class.hpp\
+				phonebook.hpp
 
+SRCS		:= 	main.cpp\
+				Contact.class.cpp\
+				PhoneBook.class.cpp\
+				print_headers.cpp\
+				utils.cpp
+
+OBJDIR		:= 	obj
+OBJ 		:= 	$(SRCS:%.cpp=$(OBJDIR)/%.o)
+
+
+# ---------------------------------------------------------------------------- #
+#                                  BASE RULES                                  #
+# ---------------------------------------------------------------------------- #
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(OBJS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CXX) $(OBJ) -o $(NAME)
+
+$(OBJDIR)/%.o: %.cpp
+	@mkdir -p '$(@D)'
+	$(CXX) -c $(CXXFLAGS) $< -o $@
 
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# ---------------------------------------------------------------------------- #
+#                                 FORMAT RULES                                 #
+# ---------------------------------------------------------------------------- #
+format:
+	clang-format -style=microsoft -i ${SRCS}
+
+# ---------------------------------------------------------------------------- #
+#                                 LINTER RULES                                 #
+# ---------------------------------------------------------------------------- #
+lint:
+	clang-tidy ${HEADERS} -checks=-*,cppcoreguidelines-*
+	clang-tidy ${SRCS} -checks=-*,cppcoreguidelines-*
+
+# ------------------------------- END OF RULES ------------------------------- #
+
+.PHONY: all clean fclean re format

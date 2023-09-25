@@ -6,12 +6,13 @@
 /*   By: numartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:59:55 by numartin          #+#    #+#             */
-/*   Updated: 2023/09/22 16:34:35 by numartin         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:02:03 by numartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
+# include <iostream>
 
 void	print_main_header( void );
 void	print_add_header( void );
